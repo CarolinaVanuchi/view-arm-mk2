@@ -6,9 +6,7 @@ function App() {
     <>
       <Header></Header>
       <Container>
-
-      <Option></Option>       
-
+        <Option></Option>      
       </Container>
 
     </>

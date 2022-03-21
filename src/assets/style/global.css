@@ -12,3 +12,7 @@ code {
       monospace;
   }
 
+label {
+  font-size: calc(8px + (8/1200) * 100 * 1vw);
+  color: #1C2833;
+}

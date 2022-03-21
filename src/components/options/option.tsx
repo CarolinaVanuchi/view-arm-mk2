@@ -1,8 +1,9 @@
-import { Tab, TabContent , Row, Col, Nav } from 'react-bootstrap';
+import { Tab, Row, Col, Nav } from 'react-bootstrap';
+import Angle from '../angle/angle';
 
 const Options = () => {
     return (
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="angle">
             <Row>
                 <Col sm={3}>
                     <Nav variant="pills" className="flex-column">
@@ -23,7 +24,7 @@ const Options = () => {
                 <Col sm={9}>
                     <Tab.Content>
                         <Tab.Pane eventKey="angle">
-                           aaaa
+                            <Angle></Angle>
                         </Tab.Pane>
                         <Tab.Pane eventKey="position">
                             bbbbb
