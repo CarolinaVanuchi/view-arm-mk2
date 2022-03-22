@@ -22,7 +22,7 @@ export class AngleApi {
         console.log('this.url');
         console.log(this.url);
         const angle = { theta1: this.theta1, theta2: this.theta2, theta3: this.theta3 };
-        axios.post(this.url, angle).then(response => console.log('ok'));
+        axios.post(this.url, angle).then(response => console.log(response.status));
     }
 
 }

@@ -1,5 +1,7 @@
 import { Tab, Row, Col, Nav, Button } from 'react-bootstrap';
 import Angle from '../angle/angle';
+import Cartesian from '../cartesian/cartesian';
+import Position from '../position/position';
 
 const Options = () => {
     return (
@@ -37,7 +39,7 @@ const Options = () => {
                             <Angle></Angle>
                         </Tab.Pane>
                         <Tab.Pane eventKey="position">
-                            bbbbb
+                            <Cartesian></Cartesian>
                         </Tab.Pane>
                         <Tab.Pane eventKey="trajectory">
                             ccccccc
@@ -46,6 +48,13 @@ const Options = () => {
                             ccccccc
                         </Tab.Pane>
                     </Tab.Content>
+                </Col>
+
+            </Row>
+            <Row>
+                <Col sm={3}></Col>
+                <Col sm={9}>
+                    <Position></Position>
                 </Col>
             </Row>
         </Tab.Container>

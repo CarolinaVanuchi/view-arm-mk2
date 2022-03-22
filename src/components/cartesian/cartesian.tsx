@@ -2,17 +2,14 @@ import React from "react";
 import { Row, Col, Button, Form, Figure } from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
 import ArmRobot from '../../assets/images/angulo.png';
-import {AngleApi} from '../../api/angle_api';
 
-const Angle = () => {
-    const [theta1, setValue1] = React.useState('0');
-    const [theta2, setValue2] = React.useState('0');
-    const [theta3, setValue3] = React.useState('0');
+const Cartesian = () => {
+    const [x, setValue1] = React.useState('0');
+    const [y, setValue2] = React.useState('0');
+    const [z, setValue3] = React.useState('0');
 
     const getValues = () => {
-       
-        let angleApi = new AngleApi(Number(theta1), Number(theta2), Number(theta3));
-        angleApi.post();
+
     }
 
     return (
@@ -23,12 +20,12 @@ const Angle = () => {
                         <Form>
                             <Form.Group as={Row}>
                                 <Form.Label column sm="1">
-                                    <label>&#952;1</label>
+                                    <label>X</label>
                                 </Form.Label>
                                 <Col sm="11">
                                     <RangeSlider
                                         variant='secondary'
-                                        value={theta1}
+                                        value={x}
                                         onChange={e => setValue1(e.target.value)}
                                         min={0}
                                         max={50}
@@ -45,12 +42,12 @@ const Angle = () => {
                         <Form>
                             <Form.Group as={Row}>
                                 <Form.Label column sm="1">
-                                    <label>&#952;2</label>
+                                    <label>Y</label>
                                 </Form.Label>
                                 <Col sm="11">
                                     <RangeSlider
                                         variant='secondary'
-                                        value={theta2}
+                                        value={y}
                                         onChange={e => setValue2(e.target.value)}
                                         min={0}
                                         max={50}
@@ -66,12 +63,12 @@ const Angle = () => {
                         <Form>
                             <Form.Group as={Row}>
                                 <Form.Label column sm="1">
-                                    <label>&#952;3</label>
+                                    <label>Z</label>
                                 </Form.Label>
                                 <Col sm="11">
                                     <RangeSlider
                                         variant='secondary'
-                                        value={theta3}
+                                        value={z}
                                         onChange={e => setValue3(e.target.value)}
                                         min={0}
                                         max={50}
@@ -104,7 +101,6 @@ const Angle = () => {
         </>
     );
 
-
 }
 
-export default Angle;
+export default Cartesian;
