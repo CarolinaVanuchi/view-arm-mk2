@@ -2,11 +2,20 @@ import React from "react";
 import { Row, Col, Button, Form, Figure } from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
 import ArmRobot from '../../assets/images/angulo.png';
+import Position from '../position/position';
+import {AngleApi} from '../../api/angle_api';
 
 const Angle = () => {
     const [theta1, setValue1] = React.useState('0');
     const [theta2, setValue2] = React.useState('0');
     const [theta3, setValue3] = React.useState('0');
+
+    const getValues = () => {
+       
+        let angleApi = new AngleApi(Number(theta1), Number(theta2), Number(theta3));
+        angleApi.post();
+    }
+
     return (
         <>
             <Row>
@@ -77,7 +86,7 @@ const Angle = () => {
 
                     <Row>
                         <div className="d-grid">
-                            <Button variant="secondary">Mover</Button>
+                            <Button variant="secondary" onClick={getValues}>Mover</Button>
 
                         </div>
                     </Row>
@@ -93,8 +102,11 @@ const Angle = () => {
                 </Col>
 
             </Row>
+            <Position></Position>
         </>
     );
+
+
 }
 
 export default Angle;
