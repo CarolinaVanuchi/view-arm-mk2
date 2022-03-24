@@ -1,7 +1,22 @@
-import axios from "axios";
+export enum RequesterMethodEnum {
+  GET = 'GET',
+  POST = 'POST',
+}
 
-const Api = axios.create({
-  baseURL: "http://localhost:4000/api/",
-});
+export type RequesterServiceModel = {
+  method: RequesterMethodEnum;
+  endpoint: string;
+  timeout?: number;
+  attempt?: number;
+};
 
-export default Api;
+export type RequesterOptionsModel = {
+  data?: any;
+};
+
+export type RequesterResponseModel = {
+  success: boolean;
+  status?: number;
+  error?: any;
+  data: any;
+};

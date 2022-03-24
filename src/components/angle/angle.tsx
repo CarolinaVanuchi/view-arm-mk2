@@ -2,17 +2,31 @@ import React from "react";
 import { Row, Col, Button, Form, Figure } from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
 import ArmRobot from '../../assets/images/angulo.png';
-import {AngleApi} from '../../api/angle_api';
+import Requester from '../../api/request';
+import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
 
 const Angle = () => {
+
     const [theta1, setValue1] = React.useState('0');
     const [theta2, setValue2] = React.useState('0');
     const [theta3, setValue3] = React.useState('0');
 
-    const getValues = () => {
-       
-        let angleApi = new AngleApi(Number(theta1), Number(theta2), Number(theta3));
-        angleApi.post();
+    const sendAngle = async () => {
+
+        const options = {
+            data: {
+                theta1,
+                theta2,
+                theta3,
+            }
+        };
+
+        const service: RequesterServiceModel = {
+            method: RequesterMethodEnum.POST,
+            endpoint: '/angle'
+        }
+
+        const { data } = await Requester(service, options);
     }
 
     return (
@@ -85,7 +99,7 @@ const Angle = () => {
 
                     <Row>
                         <div className="d-grid">
-                            <Button variant="secondary" onClick={getValues}>Mover</Button>
+                            <Button variant="secondary" onClick={sendAngle}>Mover</Button>
 
                         </div>
                     </Row>
