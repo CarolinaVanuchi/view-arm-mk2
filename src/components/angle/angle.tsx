@@ -4,14 +4,19 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import ArmRobot from '../../assets/images/angulo.png';
 import Requester from '../../api/request';
 import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
+//const Input = (props: InputProps, ref) => {}
+interface customProps {
+    changeEnable: () => void;
+}
 
-const Angle = () => {
-
+const Angle = (props: customProps) => {
+    
     const [theta1, setValue1] = React.useState('0');
     const [theta2, setValue2] = React.useState('0');
     const [theta3, setValue3] = React.useState('0');
 
     const sendAngle = async () => {
+        props.changeEnable();
 
         const options = {
             data: {
@@ -96,12 +101,20 @@ const Angle = () => {
                             </Form.Group>
                         </Form>
                     </Row>
-
+                    <br />
                     <Row>
-                        <div className="d-grid">
-                            <Button variant="secondary" onClick={sendAngle}>Mover</Button>
+                        <Col sm={6}>
+                            <div className="d-grid">
+                                <Button variant="secondary" onClick={sendAngle}>Mover</Button>
 
-                        </div>
+                            </div>
+                        </Col>
+                        <Col sm={6}>
+                            <div className="d-grid">
+                                <Button variant="danger">Parar</Button>
+
+                            </div>
+                        </Col>
                     </Row>
                 </Col>
 
