@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Tab, Row, Col, Nav, Button } from 'react-bootstrap';
 import Angle from '../angle/angle';
 import Cartesian from '../cartesian/cartesian';
+import Manual from '../manual/manual';
 import Position from '../position/position';
 
 const Options = () => {
@@ -26,10 +27,7 @@ const Options = () => {
                             <Nav.Link disabled={notEnable} eventKey="position">Posição</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link disabled={notEnable} eventKey="trajectory-circular">Trajetória Circular</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link disabled={notEnable} eventKey="trajectory-circular-final-point">Trajetória Circular com Ponto Final</Nav.Link>
+                            <Nav.Link disabled={notEnable} eventKey="points">Lista de Pontos</Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </Col>
@@ -48,11 +46,8 @@ const Options = () => {
                         <Tab.Pane eventKey="position">
                             <Cartesian></Cartesian>
                         </Tab.Pane>
-                        <Tab.Pane eventKey="trajectory">
-                            ccccccc
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="trajectory-circular-final-point">
-                            ccccccc
+                        <Tab.Pane eventKey="points">
+                            <Manual></Manual>
                         </Tab.Pane>
                     </Tab.Content>
                 </Col>
