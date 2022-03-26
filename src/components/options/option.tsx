@@ -6,12 +6,9 @@ import Position from '../position/position';
 
 const Options = () => {
 
-
-    const [enable, setEnable] = useState(true);
+    const [notEnable, setEnable] = useState(false);
     const changeEnable = () => {
         setEnable((prevState) => !prevState);
-        console.log('here');
-        console.log(enable);
     }
 
     return (
@@ -20,19 +17,19 @@ const Options = () => {
                 <Col sm={3}>
                     <Nav variant="pills" className="flex-column">
                         <Nav.Item>
-                            <Nav.Link disabled={enable} eventKey="home">Home</Nav.Link>
+                            <Nav.Link disabled={notEnable} eventKey="home">Home</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="angle">Ângulo</Nav.Link>
+                            <Nav.Link disabled={notEnable} eventKey="angle">Ângulo</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="position">Posição</Nav.Link>
+                            <Nav.Link disabled={notEnable} eventKey="position">Posição</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="trajectory-circular">Trajetória Circular</Nav.Link>
+                            <Nav.Link disabled={notEnable} eventKey="trajectory-circular">Trajetória Circular</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="trajectory-circular-final-point">Trajetória Circular com Ponto Final</Nav.Link>
+                            <Nav.Link disabled={notEnable} eventKey="trajectory-circular-final-point">Trajetória Circular com Ponto Final</Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </Col>

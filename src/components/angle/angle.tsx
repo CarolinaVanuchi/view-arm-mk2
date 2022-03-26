@@ -1,23 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import { Row, Col, Button, Form, Figure } from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
 import ArmRobot from '../../assets/images/angulo.png';
 import Requester from '../../api/request';
 import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
-//const Input = (props: InputProps, ref) => {}
+
 interface customProps {
     changeEnable: () => void;
 }
 
 const Angle = (props: customProps) => {
-    
+    const [disableButton, setDisableButton] = useState(false);
+
     const [theta1, setValue1] = React.useState('0');
     const [theta2, setValue2] = React.useState('0');
     const [theta3, setValue3] = React.useState('0');
-
-    const sendAngle = async () => {
+   
+    const sendStop = async () => {
         props.changeEnable();
-
+        setDisableButton(false);
+    }
+    
+    const sendAngle = async () => {
+       setDisableButton(true);
+        props.changeEnable();
         const options = {
             data: {
                 theta1,
@@ -105,14 +111,13 @@ const Angle = (props: customProps) => {
                     <Row>
                         <Col sm={6}>
                             <div className="d-grid">
-                                <Button variant="secondary" onClick={sendAngle}>Mover</Button>
+                                <Button disabled={disableButton} variant="secondary" onClick={sendAngle}>Mover</Button>
 
                             </div>
                         </Col>
                         <Col sm={6}>
                             <div className="d-grid">
-                                <Button variant="danger">Parar</Button>
-
+                                <Button disabled={!disableButton} onClick={sendStop} variant="danger">Parar</Button>
                             </div>
                         </Col>
                     </Row>

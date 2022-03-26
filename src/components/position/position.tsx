@@ -1,7 +1,7 @@
 import { Alert, Col } from "react-bootstrap";
 import Requester from '../../api/request';
 import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 const Position = () => {
     const [theta1, setTheta1] = useState(0);
@@ -9,9 +9,8 @@ const Position = () => {
     const [theta3, setTheta3] = useState(0);
 
     useEffect(() => {
-        const timer1 = setInterval(() => showAngle(), 1000);
+        const timer1 = setInterval(() => showAngle(), 3000);
         return () => {
-            console.log('bb')
             clearInterval(timer1);
         };
     }, []);
@@ -23,8 +22,7 @@ const Position = () => {
             endpoint: '/position'
         }
         const { data } = await Requester(service);
-        console.log('a', data);
-        const {theta1, theta2, theta3} = data;
+        const { theta1, theta2, theta3 } = data;
         setTheta1(theta1);
         setTheta2(theta2);
         setTheta3(theta3);
