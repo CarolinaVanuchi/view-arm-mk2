@@ -10,7 +10,7 @@ const FormList = () => {
     return (
         <>
             <Form>
-                <Col sm={10}>
+                <Col sm={12}>
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                         <Form.Label column sm={3}>
                             Nome

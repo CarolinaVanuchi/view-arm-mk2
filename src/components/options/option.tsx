@@ -4,7 +4,7 @@ import Angle from '../angle/angle';
 import Cartesian from '../cartesian/cartesian';
 import Manual from '../manual/manual';
 import Position from '../position/position';
-import './style.css';
+import './option.css';
 
 const Options = () => {
 

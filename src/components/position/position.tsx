@@ -2,6 +2,7 @@ import { Alert, Col } from "react-bootstrap";
 import Requester from '../../api/request';
 import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
 import { useEffect, useState } from 'react';
+import './position.css';
 
 const Position = () => {
     const [theta1, setTheta1] = useState(0);

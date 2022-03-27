@@ -1,0 +1,17 @@
+
+label {
+    font-size: calc(4px + (8/1200) * 100 * 1vw);
+    color: #1C2833;
+  }
+  
+.info-angle {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100% ;
+    padding: 10px;
+}
+
+.item-info {
+    width: 150px;
+    margin: 5px;
+}
