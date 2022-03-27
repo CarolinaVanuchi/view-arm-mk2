@@ -33,15 +33,12 @@ const Position = () => {
                 <Alert.Heading>Posição Atual</Alert.Heading>
                 <div className="info-angle">
                     <div className="item-info">
-                        <label>&#952;1:</label>
-                        {theta1}
+                        <label>&#952;1: {theta1}</label>
                     </div>
                     <div className="item-info">
-                        <label>&#952;2:</label>
-                        {theta2}
+                        <label>&#952;2: {theta2}</label>
                     </div> <div className="item-info">
-                        <label>&#952;3:</label>
-                        {theta3}
+                        <label>&#952;3: {theta3}</label>
                     </div>
                 </div>
             </Alert>

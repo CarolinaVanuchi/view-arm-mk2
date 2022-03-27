@@ -4,6 +4,7 @@ import Angle from '../angle/angle';
 import Cartesian from '../cartesian/cartesian';
 import Manual from '../manual/manual';
 import Position from '../position/position';
+import './style.css';
 
 const Options = () => {
 
@@ -31,34 +32,34 @@ const Options = () => {
                         </Nav.Item>
                     </Nav>
                 </Col>
-                <Col sm={9}>
+                <Col sm={7}>
                     <Tab.Content>
                         <Tab.Pane eventKey="home">
-                            <div className="d-grid">
-                                <Button variant="success">Ligar</Button> <br />
-                                <Button variant="secondary">Go Home</Button> <br />
-                                <Button variant="danger">Desligar</Button>
-                            </div>
+                            <Col sm={10}>
+                                <div className="d-grid">
+                                    <Button variant="success">Ligar</Button> <br />
+                                    <Button variant="dark">Go Home</Button> <br />
+                                    <Button variant="danger">Desligar</Button>
+                                </div>
+                            </Col>
                         </Tab.Pane>
                         <Tab.Pane eventKey="angle">
                             <Angle changeEnable={changeEnable}></Angle>
                         </Tab.Pane>
                         <Tab.Pane eventKey="position">
-                            <Cartesian></Cartesian>
+                            <Cartesian changeEnable={changeEnable}></Cartesian>
                         </Tab.Pane>
                         <Tab.Pane eventKey="points">
                             <Manual></Manual>
                         </Tab.Pane>
                     </Tab.Content>
+                    <br />
+                    <Col sm={12}>
+                        <Position></Position>
+                    </Col>
                 </Col>
+            </Row>
 
-            </Row>
-            <Row>
-                <Col sm={3}></Col>
-                <Col sm={9}>
-                    <Position></Position>
-                </Col>
-            </Row>
         </Tab.Container>
     );
 }

@@ -1,32 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, Button, Form, Figure } from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
-import ArmRobot from '../../assets/images/angulo.png';
+import ArmRobot from '../../assets/images/cartesian.png';
+import Requester from '../../api/request';
+import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
 
-const Cartesian = () => {
-    const [x, setValue1] = React.useState('0');
-    const [y, setValue2] = React.useState('0');
-    const [z, setValue3] = React.useState('0');
+interface customProps {
+    changeEnable: () => void;
+}
 
-    const getValues = () => {
+const Cartesian = (props: customProps) => {
+    const [disableButton, setDisableButton] = useState(false);
 
+    const [pointX, setPointX] = React.useState('0');
+    const [pointY, setPointY] = React.useState('0');
+    const [pointZ, setPointZ] = React.useState('0');
+
+    const sendStop = async () => {
+        props.changeEnable();
+        setDisableButton(false);
+    }
+
+    const sendCartesian = async () => {
+        setDisableButton(true);
+        props.changeEnable();
+        const options = {
+            data: {
+                pointX,
+                pointY,
+                pointZ,
+            }
+        };
+
+        const service: RequesterServiceModel = {
+            method: RequesterMethodEnum.POST,
+            endpoint: '/cartesian'
+        }
+
+        const { data } = await Requester(service, options);
     }
 
     return (
         <>
-            <Row>
-                <Col sm={8}>
-                    <Row>
-                        <Form>
+            <Form>
+                <Row>
+                    <Col sm={8}>
+                        <Row>
                             <Form.Group as={Row}>
                                 <Form.Label column sm="1">
                                     <label>X</label>
                                 </Form.Label>
                                 <Col sm="11">
                                     <RangeSlider
-                                        variant='secondary'
-                                        value={x}
-                                        onChange={e => setValue1(e.target.value)}
+                                        variant='dark'
+                                        value={pointX}
+                                        onChange={e => setPointX(e.target.value)}
                                         min={0}
                                         max={50}
                                         tooltipPlacement='top'
@@ -34,21 +62,18 @@ const Cartesian = () => {
                                     />
                                 </Col>
                             </Form.Group>
-                        </Form>
-                    </Row>
+                        </Row>
 
-
-                    <Row>
-                        <Form>
+                        <Row>
                             <Form.Group as={Row}>
                                 <Form.Label column sm="1">
                                     <label>Y</label>
                                 </Form.Label>
                                 <Col sm="11">
                                     <RangeSlider
-                                        variant='secondary'
-                                        value={y}
-                                        onChange={e => setValue2(e.target.value)}
+                                        variant='dark'
+                                        value={pointY}
+                                        onChange={e => setPointY(e.target.value)}
                                         min={0}
                                         max={50}
                                         tooltipPlacement='top'
@@ -56,20 +81,18 @@ const Cartesian = () => {
                                     />
                                 </Col>
                             </Form.Group>
-                        </Form>
-                    </Row>
+                        </Row>
 
-                    <Row>
-                        <Form>
+                        <Row>
                             <Form.Group as={Row}>
                                 <Form.Label column sm="1">
                                     <label>Z</label>
                                 </Form.Label>
                                 <Col sm="11">
                                     <RangeSlider
-                                        variant='secondary'
-                                        value={z}
-                                        onChange={e => setValue3(e.target.value)}
+                                        variant='dark'
+                                        value={pointZ}
+                                        onChange={e => setPointZ(e.target.value)}
                                         min={0}
                                         max={50}
                                         tooltipPlacement='top'
@@ -77,29 +100,37 @@ const Cartesian = () => {
                                     />
                                 </Col>
                             </Form.Group>
-                        </Form>
-                    </Row>
+                        </Row>
+                        <br />
+                        <Row>
+                            <Col sm={6}>
+                                <div className="d-grid">
+                                    <Button disabled={disableButton} variant="dark" onClick={sendCartesian}>Mover</Button>
 
-                    <Row>
-                        <div className="d-grid">
-                            <Button variant="secondary" onClick={getValues}>Mover</Button>
+                                </div>
+                            </Col>
+                            <Col sm={6}>
+                                <div className="d-grid">
+                                    <Button disabled={!disableButton} onClick={sendStop} variant="danger">Parar</Button>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Col>
 
-                        </div>
-                    </Row>
-                </Col>
+                    <Col sm={4}>
+                        <Figure>
+                            <Figure.Image
+                                alt="Cartesiano"
+                                src={ArmRobot}
+                            />
+                        </Figure>
+                    </Col>
 
-                <Col sm={4}>
-                    <Figure>
-                        <Figure.Image
-                            alt="Ângulo"
-                            src={ArmRobot}
-                        />
-                    </Figure>
-                </Col>
-
-            </Row>
+                </Row>
+            </Form>
         </>
     );
+
 
 }
 

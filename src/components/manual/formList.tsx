@@ -27,7 +27,7 @@ const FormList = () => {
                             </Form.Label>
                             <Col sm={9}>
                                 <RangeSlider
-                                    variant='secondary'
+                                    variant='dark'
                                     value={base}
                                     onChange={e => setBase(e.target.value)}
                                     min={0}
@@ -46,7 +46,7 @@ const FormList = () => {
                             </Form.Label>
                             <Col sm={9}>
                                 <RangeSlider
-                                    variant='secondary'
+                                    variant='dark'
                                     value={primeiroElo}
                                     onChange={e => setPrimeiroElo(e.target.value)}
                                     min={0}
@@ -65,7 +65,7 @@ const FormList = () => {
                             </Form.Label>
                             <Col sm={9}>
                                 <RangeSlider
-                                    variant='secondary'
+                                    variant='dark'
                                     value={segundooElo}
                                     onChange={e => setSegundooElo(e.target.value)}
                                     min={0}
@@ -81,7 +81,7 @@ const FormList = () => {
                     <Row>
                         <Col sm={12}>
                             <div className="d-grid">
-                                <Button variant="secondary">Salvar</Button>
+                                <Button variant="dark">Salvar</Button>
                             </div>
                         </Col>
                     </Row>
