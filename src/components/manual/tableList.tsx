@@ -1,56 +1,76 @@
-import React from 'react';
-import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
-import Requester from '../../api/request';
 import { Table, Button } from 'react-bootstrap';
+import Requester from '../../api/request';
+import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
+import { useEffect, useState } from 'react';
 import { FaTrash, FaRegHandPointUp } from 'react-icons/fa';
-class TableList extends React.Component {
+import React from 'react';
 
-    state = {
-        itensList: []
-    };
+const TableList = () => {
+    const [repos, setRepos] = useState([])
 
-    async componentDidMount() {
+    useEffect(() => {
+        fetchApi();
+    }, []);
+
+    const deleteIten = async (id_angle: string) => {
+        alert(id_angle)
+        const service: RequesterServiceModel = {
+            method: RequesterMethodEnum.DELETE,
+            endpoint: '/remove'
+        }
+        const option = {
+            data: {
+                id_angle
+            }
+        };
+
+        await Requester(service, option);
+    }
+
+    const fetchApi = async () => {
+
         const service: RequesterServiceModel = {
             method: RequesterMethodEnum.GET,
             endpoint: '/all'
         }
         const { data } = await Requester(service);
-        this.setState({
-            itensList: data
-        });
-    }
+        setRepos(data);
+        console.log('repos');
 
-    render() {
-        return (
-            <div>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Base</th>
-                            <th>Primeiro Elo</th>
-                            <th>Segundo Elo</th>
-                            <th>Excluir</th>
-                            <th>Selecionar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.itensList.map(item => (
-                            <tr key={item.id_angle}>
-                                <td>{item.description}</td>
-                                <td>{item.theta1}</td>
-                                <td>{item.theta2}</td>
-                                <td>{item.theta3}</td>
-                                <td><Button size="sm" variant='danger'><FaTrash /></Button></td>
-                                <td><Button size="sm"><FaRegHandPointUp /></Button></td>
-                            </tr>
-                        ))}
-
-                    </tbody>
-                </Table>
-            </div>
-        );
     }
+    return (
+        <>
+            {<Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Base</th>
+                        <th>Primeiro Elo</th>
+                        <th>Segundo Elo</th>
+                        <th>Excluir</th>
+                        <th>Selecionar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {
+                        repos.map((val: any, key: any) => {
+                            return (
+                                <tr key={val.id_angle}>
+                                    <td>{val.description}</td>
+                                    <td>{val.theta1}</td>
+                                    <td>{val.theta2}</td>
+                                    <td>{val.theta3}</td>
+                                    <td><Button size="sm" variant='danger' onClick={() => deleteIten(val.id_angle)}><FaTrash /></Button></td>
+                                    <td><Button size="sm"><FaRegHandPointUp /></Button></td>
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </Table>}
+        </>
+    );
 }
 
 export default TableList;
