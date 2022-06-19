@@ -10,21 +10,29 @@ const TableList = () => {
 
     useEffect(() => {
         fetchApi();
+        const timerList = setInterval(() => fetchApi(), 3000);
+        return () => {
+            clearInterval(timerList);
+        }
     }, []);
 
     const deleteIten = async (id_angle: string) => {
-        alert(id_angle)
-        const service: RequesterServiceModel = {
-            method: RequesterMethodEnum.DELETE,
-            endpoint: '/remove'
-        }
-        const option = {
-            data: {
-                id_angle
-            }
-        };
+        let confirm_delete = confirm("Deseja excluir este item? De Cod. " + id_angle);
 
-        await Requester(service, option);
+        if (confirm_delete) {
+
+            const service: RequesterServiceModel = {
+                method: RequesterMethodEnum.DELETE,
+                endpoint: '/remove'
+            }
+            const option = {
+                data: {
+                    id_angle
+                }
+            };
+            await Requester(service, option);
+            fetchApi();
+        }
     }
 
     const fetchApi = async () => {
@@ -44,9 +52,9 @@ const TableList = () => {
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Base</th>
-                        <th>Primeiro Elo</th>
-                        <th>Segundo Elo</th>
+                        <th>&#952;1</th>
+                        <th>&#952;2</th>
+                        <th>&#952;3</th>
                         <th>Excluir</th>
                         <th>Selecionar</th>
                     </tr>

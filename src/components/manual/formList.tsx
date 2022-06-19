@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import RangeSlider from "react-bootstrap-range-slider";
 import Requester from '../../api/request';
 import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
+import TableList from '../manual/tableList';
 
 
 const FormList = () => {
@@ -27,6 +28,11 @@ const FormList = () => {
         }
 
         const { data } = await Requester(service, options);
+        alert("Registro Salvo");
+        setTheta1('0');
+        setTheta2('0');
+        setTheta3('0');
+        setDescription('');
     }
 
     return (
@@ -38,7 +44,7 @@ const FormList = () => {
                             Nome
                         </Form.Label>
                         <Col sm={9}>
-                            <Form.Control type="text" value={description} onChange={e => setDescription(e.target.value)}/>
+                            <Form.Control type="text" value={description} onChange={e => setDescription(e.target.value)} />
                         </Col>
                     </Form.Group>
 

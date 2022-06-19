@@ -18,9 +18,9 @@ const Options = () => {
             <Row>
                 <Col sm={3}>
                     <Nav variant="pills" className="flex-column">
-                        <Nav.Item>
-                            <Nav.Link disabled={notEnable} eventKey="home">Home</Nav.Link>
-                        </Nav.Item>
+                    <Nav.Item>
+                            <Nav.Link disabled={notEnable} eventKey="home">Início</Nav.Link>
+                        </Nav.Item> 
                         <Nav.Item>
                             <Nav.Link disabled={notEnable} eventKey="angle">Ângulo</Nav.Link>
                         </Nav.Item>
@@ -35,13 +35,8 @@ const Options = () => {
                 <Col sm={7}>
                     <Tab.Content>
                         <Tab.Pane eventKey="home">
-                            <Col sm={10}>
-                                <div className="d-grid">
-                                    <Button variant="success">Ligar</Button> <br />
-                                    <Button variant="dark">Go Home</Button> <br />
-                                    <Button variant="danger">Desligar</Button>
-                                </div>
-                            </Col>
+                            <h1>Bem-Vindo ao painel de controle do Arm MK2 Plus</h1>
+                            <span>Existem três opções, controle por cinemática direta, cinemática inversa, e utilizar lista de pontos criadas</span>
                         </Tab.Pane>
                         <Tab.Pane eventKey="angle">
                             <Angle changeEnable={changeEnable}></Angle>

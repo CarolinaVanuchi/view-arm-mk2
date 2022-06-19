@@ -1,6 +1,7 @@
 
 label {
-    font-size: calc(4px + (8/1200) * 100 * 1vw);
+    /*font-size: calc(4px + (8/1200) * 100 * 1vw);*/
+    font-size: 18px;
     color: #1C2833;
   }
   
