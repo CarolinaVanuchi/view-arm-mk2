@@ -23,12 +23,16 @@ const Angle = (props: customProps) => {
 
     const sendAngle = async () => {
         setDisableButton(true);
+        
+        let theta1_d = parseFloat(theta1);
+        let theta2_d = parseFloat(theta2);
+        let theta3_d = parseFloat(theta3);
         props.changeEnable();
         const options = {
             data: {
-                theta1,
-                theta2,
-                theta3,
+                "theta1": theta1_d,
+                "theta2": theta2_d,
+                "theta3": theta3_d,
             }
         };
 
@@ -56,7 +60,7 @@ const Angle = (props: customProps) => {
                                         value={theta1}
                                         onChange={e => setTheta1(e.target.value)}
                                         min={0}
-                                        max={50}
+                                        max={320}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />
@@ -74,8 +78,8 @@ const Angle = (props: customProps) => {
                                         variant='dark'
                                         value={theta2}
                                         onChange={e => setTheta2(e.target.value)}
-                                        min={0}
-                                        max={50}
+                                        min={0.0}
+                                        max={90}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />
@@ -94,7 +98,7 @@ const Angle = (props: customProps) => {
                                         value={theta3}
                                         onChange={e => setTheta3(e.target.value)}
                                         min={0}
-                                        max={50}
+                                        max={90}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />

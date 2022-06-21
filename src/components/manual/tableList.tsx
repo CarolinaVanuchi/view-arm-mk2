@@ -36,23 +36,28 @@ const TableList = () => {
     }
 
     const sendValues = async (valuesIten: any) => {
-        const theta1 = valuesIten.theta1;
-        const theta2 = valuesIten.theta2;
-        const theta3 = valuesIten.theta3;
-        const options = {
-            data: {
-                theta1,
-                theta2,
-                theta3,
-            }
-        };
+        let confirm_send = confirm("Confirma o envio dos valores? \n Ao enviar aguardar a finalização para o próximo movimento");
 
-        const service: RequesterServiceModel = {
-            method: RequesterMethodEnum.POST,
-            endpoint: '/angle'
+        if (confirm_send) {
+            const theta1 = valuesIten.theta1;
+            const theta2 = valuesIten.theta2;
+            const theta3 = valuesIten.theta3;
+            const options = {
+                data: {
+                    theta1,
+                    theta2,
+                    theta3,
+                }
+            };
+
+            const service: RequesterServiceModel = {
+                method: RequesterMethodEnum.POST,
+                endpoint: '/angle'
+            }
+
+            const { data } = await Requester(service, options);
         }
 
-        const { data } = await Requester(service, options);
     }
 
     const fetchApi = async () => {
