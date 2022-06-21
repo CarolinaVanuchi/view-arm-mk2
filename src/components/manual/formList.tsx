@@ -59,7 +59,7 @@ const FormList = () => {
                                     value={theta1}
                                     onChange={e => setTheta1(e.target.value)}
                                     min={0}
-                                    max={50}
+                                    max={320}
                                     tooltipPlacement='top'
                                     tooltip='on'
                                 />
@@ -78,7 +78,7 @@ const FormList = () => {
                                     value={theta2}
                                     onChange={e => setTheta2(e.target.value)}
                                     min={0}
-                                    max={50}
+                                    max={90}
                                     tooltipPlacement='top'
                                     tooltip='on'
                                 />
@@ -97,7 +97,7 @@ const FormList = () => {
                                     value={theta3}
                                     onChange={e => setTheta3(e.target.value)}
                                     min={0}
-                                    max={50}
+                                    max={90}
                                     tooltipPlacement='top'
                                     tooltip='on'
                                 />

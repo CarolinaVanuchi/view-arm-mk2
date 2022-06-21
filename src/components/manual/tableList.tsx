@@ -42,11 +42,16 @@ const TableList = () => {
             const theta1 = valuesIten.theta1;
             const theta2 = valuesIten.theta2;
             const theta3 = valuesIten.theta3;
+
+            let theta1_d = parseFloat(theta1);
+            let theta2_d = parseFloat(theta2);
+            let theta3_d = parseFloat(theta3);
+            
             const options = {
                 data: {
-                    theta1,
-                    theta2,
-                    theta3,
+                    "theta1": theta1_d,
+                    "theta2": theta2_d,
+                    "theta3": theta3_d,
                 }
             };
 
