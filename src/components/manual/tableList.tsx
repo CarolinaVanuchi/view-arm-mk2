@@ -35,6 +35,26 @@ const TableList = () => {
         }
     }
 
+    const sendValues = async (valuesIten: any) => {
+        const theta1 = valuesIten.theta1;
+        const theta2 = valuesIten.theta2;
+        const theta3 = valuesIten.theta3;
+        const options = {
+            data: {
+                theta1,
+                theta2,
+                theta3,
+            }
+        };
+
+        const service: RequesterServiceModel = {
+            method: RequesterMethodEnum.POST,
+            endpoint: '/angle'
+        }
+
+        const { data } = await Requester(service, options);
+    }
+
     const fetchApi = async () => {
 
         const service: RequesterServiceModel = {
@@ -70,7 +90,7 @@ const TableList = () => {
                                     <td>{val.theta2}</td>
                                     <td>{val.theta3}</td>
                                     <td><Button size="sm" variant='danger' onClick={() => deleteIten(val.id_angle)}><FaTrash /></Button></td>
-                                    <td><Button size="sm"><FaRegHandPointUp /></Button></td>
+                                    <td><Button size="sm"><FaRegHandPointUp onClick={() => sendValues(val)} /></Button></td>
                                 </tr>
                             )
                         })

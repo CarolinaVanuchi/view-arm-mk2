@@ -111,7 +111,7 @@ const Angle = (props: customProps) => {
                             </Col>
                             <Col sm={6}>
                                 <div className="d-grid">
-                                    <Button disabled={!disableButton} onClick={sendStop} variant="danger">Parar</Button>
+                                    <Button disabled={!disableButton} onClick={sendStop} variant="danger">Liberar</Button>
                                 </div>
                             </Col>
                         </Row>

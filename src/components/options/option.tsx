@@ -49,9 +49,9 @@ const Options = () => {
                         </Tab.Pane>
                     </Tab.Content>
                     <br />
-                    <Col sm={12}>
+                    {/* <Col sm={12}>
                         <Position></Position>
-                    </Col>
+                    </Col> */}
                 </Col>
             </Row>
 

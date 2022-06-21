@@ -23,6 +23,7 @@ const Position = () => {
             endpoint: '/position'
         }
         const { data } = await Requester(service);
+        console.log(data);
         const { theta1, theta2, theta3 } = data;
         setTheta1(theta1);
         setTheta2(theta2);
