@@ -60,7 +60,7 @@ const Angle = (props: customProps) => {
                                         value={theta1}
                                         onChange={e => setTheta1(e.target.value)}
                                         min={0}
-                                        max={320}
+                                        max={180}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />
@@ -79,7 +79,7 @@ const Angle = (props: customProps) => {
                                         value={theta2}
                                         onChange={e => setTheta2(e.target.value)}
                                         min={0.0}
-                                        max={90}
+                                        max={30}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />
@@ -98,7 +98,7 @@ const Angle = (props: customProps) => {
                                         value={theta3}
                                         onChange={e => setTheta3(e.target.value)}
                                         min={0}
-                                        max={90}
+                                        max={60}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />

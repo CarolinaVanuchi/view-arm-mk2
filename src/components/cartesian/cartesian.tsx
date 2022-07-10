@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Form, Figure } from "react-bootstrap";
 import RangeSlider from 'react-bootstrap-range-slider';
-import ArmRobot from '../../assets/images/cartesian.png';
+import ArmRobot from '../../assets/images/angle.png';
 import Requester from '../../api/request';
 import { RequesterServiceModel, RequesterMethodEnum } from "../../api/api";
 
@@ -55,8 +55,8 @@ const Cartesian = (props: customProps) => {
                                         variant='dark'
                                         value={pointX}
                                         onChange={e => setPointX(e.target.value)}
-                                        min={0}
-                                        max={50}
+                                        min={25}
+                                        max={30}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />
@@ -75,7 +75,7 @@ const Cartesian = (props: customProps) => {
                                         value={pointY}
                                         onChange={e => setPointY(e.target.value)}
                                         min={0}
-                                        max={50}
+                                        max={10}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />
@@ -93,8 +93,8 @@ const Cartesian = (props: customProps) => {
                                         variant='dark'
                                         value={pointZ}
                                         onChange={e => setPointZ(e.target.value)}
-                                        min={0}
-                                        max={50}
+                                        min={10}
+                                        max={18}
                                         tooltipPlacement='top'
                                         tooltip='on'
                                     />

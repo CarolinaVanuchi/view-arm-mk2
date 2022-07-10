@@ -36,7 +36,7 @@ const Options = () => {
                     <Tab.Content>
                         <Tab.Pane eventKey="home">
                             <h1>Bem-Vindo ao painel de controle do Arm MK2 Plus</h1>
-                            <span>Existem três opções, controle por cinemática direta, cinemática inversa, e utilizar lista de pontos criadas</span>
+                            <span>Existem quatro opções, controle por ângulo, por posição, ou utilizar lista de ângulo cadastrados no banco de dados, e realizar o cadastro desses ângulos</span>
                         </Tab.Pane>
                         <Tab.Pane eventKey="angle">
                             <Angle changeEnable={changeEnable}></Angle>
